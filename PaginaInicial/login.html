@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styleLogin.css">
+</head>
+<body>
+    <header>
+        <h1>Fazer Login</h1>
+    </header>
+    <main>
+        <form id="loginId">
+            <label for="emailId">E-mail</label>
+            <input type="email" name="" id="emailId"><br><br>
+
+            <label for="senhaId">Senha</label>
+            <div class="password-container">
+                <input type="password" id="senhaId">
+                <button type="button" id="toggleBtn" onclick="togglePassword()">
+                    <span id="eyeIcon">👁️</span>
+                </button>
+            </div>
+
+            <button type="submit" id="botaoLogar">Logar</button>
+        </form>
+
+        <p>Não Possui Cadastro? <a href="./cadastro.html">Cadastre-se</a></p>
+
+        <script src="login.js"></script>
+    </main>
+    <footer>
+        <p>Feito Por Marcos Rocha</p>
+    </footer>
+    
+</body>
+</html>

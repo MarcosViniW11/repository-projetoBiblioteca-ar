@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Painel do Usuário</title>
+
+    <link rel="stylesheet"
+          href="usuario.css">
+
+    <script defer
+            src="usuario.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ========================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ========================================================= -->
+
+    <aside class="sidebar">
+
+        <h2>Biblioteca</h2>
+
+        <button
+            class="menu-btn active"
+            onclick="mostrarSecao('dashboard')">
+
+            Dashboard
+
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="mostrarSecao('livros')">
+
+            Livros
+
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="mostrarSecao('emprestimos')">
+
+            Meus Empréstimos
+
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="mostrarSecao('autores')">
+
+            Autores
+
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="mostrarSecao('categorias')">
+
+            Categorias
+
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="mostrarSecao('cadastro')">
+
+            Meu Cadastro
+
+        </button>
+
+    </aside>
+
+    <!-- ========================================================= -->
+    <!-- CONTEÚDO -->
+    <!-- ========================================================= -->
+
+    <main class="content">
+
+        <!-- ========================================================= -->
+        <!-- TOPO -->
+        <!-- ========================================================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Painel do Usuário</h1>
+
+                <span id="nomeUsuario">
+
+                    Usuário
+
+                </span>
+
+            </div>
+
+            <button id="logoutBtn">
+
+                Sair
+
+            </button>
+
+        </header>
+               <!-- ========================================================= -->
+        <!-- DASHBOARD -->
+        <!-- ========================================================= -->
+
+        <section id="dashboard"
+                 class="page active">
+
+            <h2>Dashboard</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Livros</h3>
+
+                    <span id="totalLivros">
+
+                        0
+
+                    </span>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Autores</h3>
+
+                    <span id="totalAutores">
+
+                        0
+
+                    </span>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Categorias</h3>
+
+                    <span id="totalCategorias">
+
+                        0
+
+                    </span>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Meus Empréstimos</h3>
+
+                    <span id="totalEmprestimos">
+
+                        0
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+              <!-- ========================================================= -->
+        <!-- LIVROS -->
+        <!-- ========================================================= -->
+
+        <section id="livros"
+                 class="page">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Livros
+
+                </h2>
+
+                <input
+                    type="text"
+                    id="pesquisaLivro"
+                    placeholder="Pesquisar livro..."
+                    onkeyup="filtrarLivros()">
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Título</th>
+
+                            <th>Autor</th>
+
+                            <th>Categoria</th>
+
+                            <th>Ano</th>
+
+                            <th>Editora</th>
+
+                            <th>Disponíveis</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tbodyLivros">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+           <!-- ========================================================= -->
+        <!-- MEUS EMPRÉSTIMOS -->
+        <!-- ========================================================= -->
+
+        <section id="emprestimos"
+                 class="page">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Meus Empréstimos
+
+                </h2>
+
+                <button
+                    onclick="carregarEmprestimos()">
+
+                    Atualizar
+
+                </button>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Livro</th>
+
+                            <th>Data Empréstimo</th>
+
+                            <th>Data Prevista</th>
+
+                            <th>Data Devolução</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tbodyEmprestimos">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+             <!-- ========================================================= -->
+        <!-- AUTORES -->
+        <!-- ========================================================= -->
+
+        <section id="autores"
+                 class="page">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Autores
+
+                </h2>
+
+                <input
+                    type="text"
+                    id="pesquisaAutor"
+                    placeholder="Pesquisar autor..."
+                    onkeyup="filtrarAutores()">
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Nome</th>
+
+                            <th>Nacionalidade</th>
+
+                            <th>Biografia</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tbodyAutores">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+         <section id="categorias"
+                 class="page">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Categorias
+
+                </h2>
+
+                <input
+                    type="text"
+                    id="pesquisaCategoria"
+                    placeholder="Pesquisar categoria..."
+                    onkeyup="filtrarCategorias()">
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Nome</th>
+
+                            <th>Descrição</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tbodyCategorias">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+            <!-- ========================================================= -->
+        <!-- MEU CADASTRO -->
+        <!-- ========================================================= -->
+
+        <section id="cadastro"
+                 class="page">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Meu Cadastro
+
+                </h2>
+
+            </div>
+
+            <div class="perfil-card">
+
+                <h3 id="perfilNome">
+
+                    Nome do Usuário
+
+                </h3>
+
+                <p>
+
+                    <strong>Email:</strong>
+
+                    <span id="perfilEmail"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>Telefone:</strong>
+
+                    <span id="perfilTelefone"></span>
+
+                </p>
+
+                <div class="perfil-botoes">
+
+                    <button
+                        onclick="abrirModalCadastro()">
+
+                        Editar Cadastro
+
+                    </button>
+
+                    <button
+                        onclick="abrirModalSenha()">
+
+                        Alterar Senha
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ========================================================= -->
+        <!-- MODAL CADASTRO -->
+        <!-- ========================================================= -->
+
+        <div
+            class="modal"
+            id="modalCadastro">
+
+            <div class="modal-content">
+
+                <span
+                    class="close"
+                    onclick="fecharModalCadastro()">
+
+                    &times;
+
+                </span>
+
+                <h2>
+
+                    Atualizar Cadastro
+
+                </h2>
+
+                <label>
+
+                    Nome
+
+                </label>
+
+                <input
+                    type="text"
+                    id="cadastroNome">
+
+                <label>
+
+                    Email
+
+                </label>
+
+                <input
+                    type="email"
+                    id="cadastroEmail">
+
+                <label>
+
+                    Telefone
+
+                </label>
+
+                <input
+                    type="text"
+                    id="cadastroTelefone">
+
+                <div class="modal-buttons">
+
+                    <button
+                        onclick="salvarCadastro()">
+
+                        Salvar
+
+                    </button>
+
+                    <button
+                        class="btn-cancelar"
+                        onclick="fecharModalCadastro()">
+
+                        Cancelar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ========================================================= -->
+        <!-- MODAL SENHA -->
+        <!-- ========================================================= -->
+
+        <div
+            class="modal"
+            id="modalSenha">
+
+            <div class="modal-content">
+
+                <span
+                    class="close"
+                    onclick="fecharModalSenha()">
+
+                    &times;
+
+                </span>
+
+                <h2>
+
+                    Alterar Senha
+
+                </h2>
+
+                <label>
+
+                    Senha Atual
+
+                </label>
+
+                <input
+                    type="password"
+                    id="senhaAtual">
+
+                <label>
+
+                    Nova Senha
+
+                </label>
+
+                <input
+                    type="password"
+                    id="novaSenha">
+
+                <div class="modal-buttons">
+
+                    <button
+                        onclick="alterarSenha()">
+
+                        Alterar
+
+                    </button>
+
+                    <button
+                        class="btn-cancelar"
+                        onclick="fecharModalSenha()">
+
+                        Cancelar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+          <!-- ========================================================= -->
+        <!-- MODAL EMPRÉSTIMO -->
+        <!-- ========================================================= -->
+
+        <div
+            class="modal"
+            id="modalEmprestimo">
+
+            <div class="modal-content modal-small">
+
+                <h2>
+
+                    Confirmar Empréstimo
+
+                </h2>
+
+                <p id="textoEmprestimo">
+
+                    Deseja realmente emprestar este livro?
+
+                </p>
+
+                <div class="modal-buttons">
+
+                    <button
+                        id="btnConfirmarEmprestimo">
+
+                        Confirmar
+
+                    </button>
+
+                    <button
+                        class="btn-cancelar"
+                        onclick="fecharModalEmprestimo()">
+
+                        Cancelar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+          <!-- ========================================================= -->
+        <!-- LOADING -->
+        <!-- ========================================================= -->
+
+        <div
+            id="loading"
+            class="loading">
+
+            <div class="spinner"></div>
+
+            <p>
+
+                Carregando...
+
+            </p>
+
+        </div>
+        <!-- ========================================================= -->
+        <!-- TOAST -->
+        <!-- ========================================================= -->
+
+        <div
+            id="toast"
+            class="toast">
+
+            <span
+                id="toastMensagem">
+
+            </span>
+
+        </div>
+            </main>
+
+</div>
+
+</body>
+
+</html>

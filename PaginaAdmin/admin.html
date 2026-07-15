@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo - Biblioteca</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <script defer src="admin.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <h2>Biblioteca</h2>
+
+            <button class="menu-btn active" onclick="mostrarSecao('dashboard')">
+                Dashboard
+            </button>
+
+            <button class="menu-btn" onclick="mostrarSecao('livros')">
+                Livros
+            </button>
+
+            <button class="menu-btn" onclick="mostrarSecao('autores')">
+                Autores
+            </button>
+
+            <button class="menu-btn" onclick="mostrarSecao('categorias')">
+                Categorias
+            </button>
+
+            <button class="menu-btn" onclick="mostrarSecao('usuarios')">
+                Usuários
+            </button>
+
+            <button class="menu-btn" onclick="mostrarSecao('emprestimos')">
+                Empréstimos
+            </button>
+
+        </aside>
+
+        <!-- ================= CONTEÚDO ================= -->
+
+        <main class="content">
+
+            <!-- ================= TOPO ================= -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>Painel Administrativo</h1>
+
+                    <span id="adminNome">
+                        Administrador
+                    </span>
+
+                </div>
+
+                <button id="logoutBtn">
+                    Sair
+                </button>
+
+            </header>
+
+            <!-- ========================================================= -->
+            <!-- DASHBOARD -->
+            <!-- ========================================================= -->
+
+            <section id="dashboard" class="page active">
+
+                <h2>Dashboard</h2>
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <h3>Livros</h3>
+
+                        <span id="totalLivros">0</span>
+
+                    </div>
+
+                    <div class="card">
+
+                        <h3>Autores</h3>
+
+                        <span id="totalAutores">0</span>
+
+                    </div>
+
+                    <div class="card">
+
+                        <h3>Categorias</h3>
+
+                        <span id="totalCategorias">0</span>
+
+                    </div>
+
+                    <div class="card">
+
+                        <h3>Usuários</h3>
+
+                        <span id="totalUsuarios">0</span>
+
+                    </div>
+
+                    <div class="card">
+
+                        <h3>Empréstimos</h3>
+
+                        <span id="totalEmprestimos">0</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- LIVROS -->
+            <!-- ========================================================= -->
+
+            <section id="livros" class="page">
+
+                <div class="section-header">
+
+                    <h2>Livros</h2>
+
+                    <button onclick="abrirModalLivro()">
+                        Novo Livro
+                    </button>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Título</th>
+
+                                <th>ISBN</th>
+
+                                <th>Ano</th>
+
+                                <th>Editora</th>
+
+                                <th>Total</th>
+
+                                <th>Disponível</th>
+
+                                <th>Autor</th>
+
+                                <th>Categoria</th>
+
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tbodyLivros">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- AUTORES -->
+            <!-- ========================================================= -->
+
+            <section id="autores" class="page">
+
+                <div class="section-header">
+
+                    <h2>Autores</h2>
+
+                    <button onclick="abrirModalAutor()">
+
+                        Novo Autor
+
+                    </button>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Nome</th>
+
+                                <th>Nacionalidade</th>
+
+                                <th>Biografia</th>
+
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tbodyAutores">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- CATEGORIAS -->
+            <!-- ========================================================= -->
+
+            <section id="categorias" class="page">
+
+                <div class="section-header">
+
+                    <h2>Categorias</h2>
+
+                    <button onclick="abrirModalCategoria()">
+
+                        Nova Categoria
+
+                    </button>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Nome</th>
+
+                                <th>Descrição</th>
+
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tbodyCategorias">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+            <section id="usuarios" class="page">
+
+                <div class="section-header">
+
+                    <h2>Usuários</h2>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Data Cadastro</th>
+                                <th>Ativo</th>
+                                <th>Role</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tbodyUsuarios">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- EMPRÉSTIMOS -->
+            <!-- ========================================================= -->
+
+            <section id="emprestimos" class="page">
+
+                <div class="section-header">
+
+                    <h2>Empréstimos</h2>
+
+                    <div>
+
+                        <button onclick="atualizarEmprestimosAtrasados()">
+
+                            Atualizar Atrasados
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Usuário</th>
+                                <th>Livro</th>
+                                <th>Data Empréstimo</th>
+                                <th>Prevista</th>
+                                <th>Devolução</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tbodyEmprestimos">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- MODAL LIVRO -->
+            <!-- ========================================================= -->
+
+            <div class="modal" id="modalLivro">
+
+                <div class="modal-content">
+
+                    <span class="close" onclick="fecharModalLivro()">&times;</span>
+
+                    <h2 id="tituloModalLivro">
+
+                        Novo Livro
+
+                    </h2>
+
+                    <input type="hidden" id="livroId">
+
+                    <label>Título</label>
+                    <input type="text" id="tituloLivro">
+
+                    <label>ISBN</label>
+                    <input type="text" id="isbnLivro">
+
+                    <label>Ano</label>
+                    <input type="number" id="anoLivro">
+
+                    <label>Editora</label>
+                    <input type="text" id="editoraLivro">
+
+                    <label>Quantidade Total</label>
+                    <input type="number" id="quantidadeLivro">
+
+                    <label>Descrição</label>
+                    <textarea id="descricaoLivro"></textarea>
+
+                    <label>Autor</label>
+
+                    <select id="autorLivro">
+
+                    </select>
+
+                    <label>Categoria</label>
+
+                    <select id="categoriaLivro">
+
+                    </select>
+
+                    <button onclick="salvarLivro()">
+
+                        Salvar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- MODAL AUTOR -->
+            <!-- ========================================================= -->
+
+            <div class="modal" id="modalAutor">
+
+                <div class="modal-content">
+
+                    <span class="close" onclick="fecharModalAutor()">&times;</span>
+
+                    <h2 id="tituloModalAutor">
+
+                        Novo Autor
+
+                    </h2>
+
+                    <input type="hidden" id="autorId">
+
+                    <label>Nome</label>
+                    <input type="text" id="nomeAutor">
+
+                    <label>Nacionalidade</label>
+                    <input type="text" id="nacionalidadeAutor">
+
+                    <label>Biografia</label>
+
+                    <textarea id="biografiaAutor"></textarea>
+
+                    <button onclick="salvarAutor()">
+
+                        Salvar
+
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="modal" id="modalCategoria">
+
+                <div class="modal-content">
+
+                    <span class="close" onclick="fecharModalCategoria()">&times;</span>
+
+                    <h2 id="tituloModalCategoria">
+                        Nova Categoria
+                    </h2>
+
+                    <input type="hidden" id="categoriaId">
+
+                    <label>Nome</label>
+                    <input type="text" id="nomeCategoria">
+
+                    <label>Descrição</label>
+                    <textarea id="descricaoCategoria"></textarea>
+
+                    <div class="modal-buttons">
+
+                        <button onclick="salvarCategoria()">
+                            Salvar
+                        </button>
+
+                        <button class="btn-cancelar" onclick="fecharModalCategoria()">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- MODAL EDITAR USUÁRIO -->
+            <!-- ========================================================= -->
+
+            <div class="modal" id="modalUsuario">
+
+                <div class="modal-content">
+
+                    <span class="close" onclick="fecharModalUsuario()">&times;</span>
+
+                    <h2 id="tituloModalUsuario">
+                        Editar Usuário
+                    </h2>
+
+                    <input type="hidden" id="usuarioId">
+
+                    <label>Nome</label>
+                    <input type="text" id="nomeUsuario">
+
+                    <label>Email</label>
+                    <input type="email" id="emailUsuario">
+
+                    <label>Telefone</label>
+                    <input type="text" id="telefoneUsuario">
+
+                    <div class="modal-buttons">
+
+                        <button onclick="salvarUsuario()">
+                            Salvar Alterações
+                        </button>
+
+                        <button class="btn-cancelar" onclick="fecharModalUsuario()">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal" id="modalSenha">
+
+                <div class="modal-content">
+
+                    <span class="close" onclick="fecharModalSenha()">&times;</span>
+
+                    <h2>Alterar Senha</h2>
+
+                    <input type="hidden" id="usuarioSenhaId">
+
+                    <label>Senha Atual</label>
+                    <input type="password" id="senhaAtual">
+
+                    <label>Nova Senha</label>
+                    <input type="password" id="novaSenha">
+
+                    <div class="modal-buttons">
+
+                        <button onclick="alterarSenha()">
+                            Alterar
+                        </button>
+
+                        <button class="btn-cancelar" onclick="fecharModalSenha()">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- MODAL CONFIRMAR EXCLUSÃO -->
+            <!-- ========================================================= -->
+
+            <div class="modal" id="modalExcluir">
+
+                <div class="modal-content modal-small">
+
+                    <h2>Confirmação</h2>
+
+                    <p id="textoExcluir">
+
+                        Deseja realmente excluir este registro?
+
+                    </p>
+
+                    <div class="modal-buttons">
+
+                        <button class="btn-danger" id="btnConfirmarExcluir">
+
+                            Excluir
+
+                        </button>
+
+                        <button class="btn-cancelar" onclick="fecharModalExcluir()">
+
+                            Cancelar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- LOADING -->
+            <!-- ========================================================= -->
+
+            <div id="loading" class="loading">
+
+                <div class="spinner"></div>
+
+                <p>Carregando...</p>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- TOAST -->
+            <!-- ========================================================= -->
+
+            <div id="toast" class="toast">
+
+                <span id="toastMensagem"></span>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

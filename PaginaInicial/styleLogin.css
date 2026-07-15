@@ -1,0 +1,187 @@
+/* Configurações Globais e Reset */
+:root {
+    --primary-color: #4f46e5;      /* Roxo Moderno */
+    --primary-hover: #4338ca;
+    --bg-color: #f3f4f6;           /* Cinza bem claro */
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #d1d5db;
+    --input-focus: #a5b4fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Card Principal */
+main {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+}
+
+/* Estilização do Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 0.2rem; /* O <br> vai cuidar do restante, mas o ideal é removê-los depois */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    background-color: #fafafa;
+}
+
+input:focus {
+    background-color: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--input-focus);
+}
+
+/* Botão de Login */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1.2rem;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Links e Texto de ajuda */
+p {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    main {
+        padding: 2rem 1.5rem;
+        border-radius: 0; /* No celular muito pequeno, o card pode ocupar a tela toda */
+        box-shadow: none;
+        background-color: transparent;
+    }
+    
+    body {
+        background-color: var(--card-bg); /* Fundo branco no mobile para parecer app nativo */
+    }
+}
+
+/* Container que segura o input e o botão */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Ajuste para o input não sobrepor o ícone */
+.password-container input {
+    margin-bottom: 0; /* Remove a margem inferior padrão */
+    padding-right: 45px; /* Abre espaço para o botão à direita */
+}
+
+/* O botão de "olhinho" */
+#toggleBtn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; /* Garante que não estique */
+}
+
+#toggleBtn:hover {
+    background: none;
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+#toggleBtn:active {
+    transform: scale(0.9);
+}

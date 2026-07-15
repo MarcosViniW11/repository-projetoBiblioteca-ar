@@ -1,0 +1,177 @@
+/* Configurações Globais e Reset */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #d1d5db;
+    --input-focus: #a5b4fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container Principal (Card) */
+main {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+/* Estilização do Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 0.25rem; /* Reduzido pois o <br> já adiciona espaço */
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--input-focus);
+}
+
+/* Botão de Cadastro */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Link para Login */
+p {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Ajustes de Responsividade */
+@media (max-width: 480px) {
+    main {
+        padding: 1.5rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Container que segura o input e o botão */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Ajuste para o input não sobrepor o ícone */
+.password-container input {
+    margin-bottom: 0; /* Remove a margem inferior padrão */
+    padding-right: 45px; /* Abre espaço para o botão à direita */
+}
+
+/* O botão de "olhinho" */
+#toggleBtn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; /* Garante que não estique */
+}
+
+#toggleBtn:hover {
+    background: none;
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+#toggleBtn:active {
+    transform: scale(0.9);
+}
